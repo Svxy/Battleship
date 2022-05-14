@@ -41,18 +41,16 @@
         <div id="center">
             <div id="splash">
                 <div id ='title'>
-                    <div class = 'title-word'>WAR</div>
-                    <div class = 'title-word'>&nbsp;&nbsp;&nbsp;&nbsp;VESSELS</div>
+                    <div class = 'title-word'>&nbsp;&nbsp;S&A</div>
+                    <div class = 'title-word'>Battleships</div>
                 </div>
                 <button onclick="switchState('mode')" style = "transform: translateY(-10%);" class="fill" id="multiplayer">
-                    <p class='text'>Multiplayer</p>
+                    <p class='text'>Play</p>
                 </button>
             </div>
             <div id="share" class="card noDisplay">
                 <button onclick = "switchState('sessions')" class = "square-button triangle button-top-left point"></button>
-                <p class='text'>Share
-                    game
-                    link:</p>
+                <p class='text'>Share game link:</p>
                 <div id = "link-wrapper">
                     <label>
                         <button id="copy" class = "square-button point" onclick="copy()" aria-label="copied!" data-balloon-pos="up"><div class = "copy"></div></button>
@@ -74,11 +72,11 @@
             </div>
             <div id = "matchmaking" class = "card noDisplay">
                 <button onclick = "switchState('mode')" class = "square-button triangle point button-top-left"></button>
-                <p>Coming soon!</p>
+                <p>Coming soon!<br><br>Currently aimed at LAN play or over a Phone Call/FaceTime call.<br><br>Uses Socket.io for client management and game generation.</p>
             </div>
             <div id="sessions" class="card noDisplay">
                 <button onclick = "switchState('mode')" class = "square-button triangle point button-top-left"></button>
-                <p class='text' id = "sessions-header">Resume or create game</p>
+                <p class='text' id = "sessions-header">Resume or create game<br>Each game will disappear once finished.</p>
                 <div id='sessions-buttons'>
 
                 </div>
@@ -121,7 +119,7 @@
         }
 
          if(sessionGamesID.length == 3){
-            editText(sessionsHeader, "Resume game");
+            editText(sessionsHeader, "Games full. Each game removes itself after 30 minutes.");
         }
 
     }

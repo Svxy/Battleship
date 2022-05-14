@@ -13,19 +13,19 @@
 }
 
 .parallax>use:nth-child(1) {
-    fill: rgb(109, 188, 217);
+    fill: rgb(109, 217, 123);
     animation-delay: -2s;
     animation-duration: 14s;
 }
 
 .parallax>use:nth-child(2) {
-    fill: rgba(52, 162, 203, 0.7);
+    fill: rgba(52, 203, 120, 0.7);
     animation-delay: -3s;
     animation-duration: 20s;
 }
 
 .parallax>use:nth-child(3) {
-    fill: rgba(52, 162, 203, 0.5);
+    fill: rgba(70, 203, 52, 0.5);
     animation-delay: -4s;
     animation-duration: 26s;
 }
@@ -33,7 +33,7 @@
 .parallax>use:nth-child(4) {
     animation-delay: -5s;
     animation-duration: 40s;
-    fill: rgba(52, 162, 203, 0.3);
+    fill: rgba(52, 203, 77, 0.3);
 
 }
 
