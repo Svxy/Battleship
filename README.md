@@ -1,4 +1,4 @@
-<h2 align=center>SNA Battleships</h2>
+<h1 align=center>SNA Battleships</h1>
 
 <br>
 
@@ -63,9 +63,11 @@ ___
 
 <br>
 
+<a href='https://paypal.me/aidanmcgraw943'>
 <p align=center>
 <img src='assets/paypal.png'>
 </p>
+</a>
 
 <br>
 
