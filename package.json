@@ -1,6 +1,6 @@
 {
   "name": "sna-battleship",
-  "version": "0.3.0",
+  "version": "1.5.0",
   "description": "Battleships in browser",
   "engines": {
     "node": "12.x"
