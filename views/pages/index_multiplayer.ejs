@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SNA Battleships</title>
+    <meta name='author' content="TnyavnTo">
+    <meta name="description" content="War vessels game in browser">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../public/css/multiplayer.css" />
+    <script language="javascript" type="text/javascript" src="../public/js/sketch.js"></script>
+    <script language="javascript" type="text/javascript" src="../public/js/Canvas.js"></script>
+    <script language="javascript" type="text/javascript" src="../public/js/PlayerCanvas.js"></script>
+    <script language="javascript" type="text/javascript" src="../public/js/OpponentCanvas.js"></script>
+    <script language="javascript" type="text/javascript" src="../public/js/Piece.js"></script>
+    <script language="javascript" type="text/javascript" src="../public/js/Player.js"></script>
+    <script language="javascript" type="text/javascript" src="../public/js/helpers.js"></script>
+    <script language="javascript" type="text/javascript" src="../public/js/WaterWave.js"></script>
+
+</head>
+
+<body>
+    <main>
+        <button onclick="tutorial()" class="square-button button-top-right"><p>?</p></button>
+        <section id = "dropdown-info" class = "noDisplay">
+            
+        </section>
+        <section id="help-info">
+            <p class = 'help-info-heading'>Rules</p><button id="close" onclick="tutorial()" class="square-button create cross button-top-right"></button>
+            <ol>
+                <li>War Vessels is played by 2 players</li>
+                <li>It is a game of guessing where the opponent has placed their ships</li>
+                <li><img alt='hit' src='../public/img/hit.png' class='help-icons'> is a hit and <img alt='miss'
+                        src='../public/img/miss.png' class='help-icons'> is a miss</li>
+                <li>Ships sink when they cannot survive another attack</li>
+                <li>Game is over when either all your ships or your opponent's ships have sunk</li>
+            </ol>
+            <p class = 'help-info-heading'>Instructions</p>
+            <ol>
+                <li>Drag ships to place them</li>
+                <li><span class='touch'></span> on ships to rotate them</li>
+                <li><span class='touch'></span> on the opponent's board to attack</li>
+            </ol>
+        </section>
+        <section id="info" class = "noDisplay">
+            <button id="playButton" class="button noDisplay info-element"><p>Ready</p></button>
+            <p id="infoPara" class = "info-element"></p>
+        </section>
+        <section id="board" class = "noDisplay">
+            <div id="player" class = "boards">
+                <div id="patrol" draggable="false" class="interactable piece loadingImg">
+                    <div id = "patrol-img" class = "piece-img"></div>
+                </div>
+                <div id="submarine" draggable="false" class="interactable piece loadingImg">
+                    <div id = "submarine-img" class = "piece-img"></div>
+                </div>
+                <div id="destroyer" draggable="false" class="interactable piece loadingImg">
+                    <div id = "destroyer-img" class = "piece-img"></div>
+                </div>
+                <div id="battleship" draggable="false" class="interactable piece loadingImg">
+                    <div id = "battleship-img" class = "piece-img"></div>
+                </div>
+                <div id="carrier" draggable="false" class="interactable piece loadingImg">
+                    <div id = "carrier-img" class = "piece-img"></div>
+                </div>
+                <canvas id="playerCanvas"></canvas>
+            </div>
+            <div id="opponent" class = "boards">
+                <canvas id="opponentCanvas"></canvas>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    global.gameID = "<%= gameID %>";
+    global.playerID = "<%= playerID %>";
+
+    const json = <%= JSON.stringify(data) %>;
+    const buttons = document.getElementsByTagName('button');
+    for (const button of buttons) {
+        button.addEventListener('touchstart', () => { button.click() });
+    }
+
+    function is_touch_device() {
+        return 'ontouchstart' in window;
+    }
+
+    const touchElements = document.getElementsByClassName('touch');
+    for (const t of touchElements) {
+        const text = is_touch_device() ? 'Tap' : 'Click';
+        t.appendChild(document.createTextNode(text));
+    }
+
+    function tutorial() {
+        global.tutorialOpen = !global.tutorialOpen;
+        elements.helpInfo.classList.toggle('show');
+        elements.body.classList.toggle('overlay');
+        setTimeout(() => {
+            const infoHeadings = document.getElementsByClassName('help-info-heading');
+            for(const h of infoHeadings){
+                h.classList.toggle('underline');
+            }
+        }, 400);
+    }
+</script>
+
+</html>
