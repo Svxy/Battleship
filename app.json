@@ -3,5 +3,5 @@
   "author": "TnyavnTo",
   "description": "Online multiplayer Battleship Clone",
   "repository": "https://github.com/svxy/Battleship",
-  "keywords": ["node", "express", "heroku", "game", "Battleship", "socket.io"]
+  "keywords": ["node", "express", "render", "game", "Battleship", "socket.io"]
 }
