@@ -147,26 +147,30 @@ setInterval(write, 15000);
 const maxSessions = 3;
 
 app.use(express.json());
+app.use(session({
+  secret: 'KJMMMJHBN',
+  resave: false,
+  saveUninitialized: true
+}));
 
-app.use(session({ secret: 'XASDASDA' }));
 app.use(express.static(__dirname))
-	.set('view engine', 'ejs')
-	.get('/', (req, res) => {
-		const ssn = req.session;
-		if (ssn.gamesID !== undefined) {
-			for (let i = 0; i < ssn.gamesID.length; i++) {
-				if (gameState[ssn.gamesID[i]] === undefined) {
-					ssn.gamesID.splice(i, 1);
-					i--;
-				}
-			}
-		}
-		res.render('pages/index', {gamesID: ssn.gamesID ? ssn.gamesID : [], maxSessions: maxSessions});
-	})
-	.get('/index', (req, res) => res.redirect('/'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => {
+    const ssn = req.session;
+    if (ssn.gamesID !== undefined) {
+      for (let i = 0; i < ssn.gamesID.length; i++) {
+        if (gameState[ssn.gamesID[i]] === undefined) {
+          ssn.gamesID.splice(i, 1);
+          i--;
+        }
+      }
+    }
+    res.render('pages/index', { gamesID: ssn.gamesID ? ssn.gamesID : [], maxSessions: maxSessions });
+  })
+  .get('/index', (req, res) => res.redirect('/'))
 
 http.listen(PORT, () => {
-	console.log('listening on *:' + PORT);
+  console.log('listening on *:' + PORT);
 });
 
 
